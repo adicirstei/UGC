@@ -6,12 +6,12 @@ var mountFolder = function (connect, dir) {
 };
 module.exports = function(grunt){
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-  var uGCConfig = {
+  var appConfig = {
       app: 'src',
       dist: 'dist'
   };
   grunt.initConfig({
-    ugc: uGCConfig,
+    ugc: appConfig,
     watch: {
       livereload: {
         options: {
@@ -39,7 +39,7 @@ module.exports = function(grunt){
             return [
               lrSnippet,
               mountFolder(connect, '.tmp'),
-              mountFolder(connect, uGCConfig.app)
+              mountFolder(connect, appConfig.app)
             ];
           }
         }
@@ -49,7 +49,7 @@ module.exports = function(grunt){
         options: {
           middleware: function (connect) {
             return [
-              mountFolder(connect, uGCConfig.dist)
+              mountFolder(connect, appConfig.dist)
             ];
           }
         }
@@ -67,7 +67,7 @@ module.exports = function(grunt){
           mainConfigFile: "src/js/main.js",
           out: "dist/js/main.js",
 
-          baseUrl: uGCConfig.app + '/js',
+          baseUrl: appConfig.app + '/js',
           optimize: 'uglify2' //,
           // TODO: Figure out how to make sourcemaps work with grunt-usemin
           // https://github.com/yeoman/grunt-usemin/issues/30
