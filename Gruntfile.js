@@ -11,18 +11,18 @@ module.exports = function(grunt){
       dist: 'dist'
   };
   grunt.initConfig({
-    ugc: appConfig,
+    cfg: appConfig,
     watch: {
       livereload: {
         options: {
           livereload: LIVERELOAD_PORT
         },
         files: [
-          '<%= ugc.app %>/*.html',
-          '<%= ugc.app %>/css/*.css',
-          '{.tmp,<%= ugc.app %>}/css/{,*/}*.css',
-          '{.tmp,<%= ugc.app %>}/js/{,*/}*.js',
-          '<%= ugc.app %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= cfg.app %>/*.html',
+          '<%= cfg.app %>/css/*.css',
+          '{.tmp,<%= cfg.app %>}/css/{,*/}*.css',
+          '{.tmp,<%= cfg.app %>}/js/{,*/}*.js',
+          '<%= cfg.app %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -84,8 +84,8 @@ module.exports = function(grunt){
         files: [{
           expand: true,
           dot: true,
-          cwd: '<%= angry.app %>',
-          dest: '<%= angry.dist %>',
+          cwd: '<%= cfg.app %>',
+          dest: '<%= cfg.dist %>',
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
@@ -98,7 +98,7 @@ module.exports = function(grunt){
         }, {
           expand: true,
           cwd: '.tmp/images',
-          dest: '<%= angry.dist %>/img',
+          dest: '<%= cfg.dist %>/img',
           src: [
             'generated/*'
           ]
@@ -123,8 +123,8 @@ module.exports = function(grunt){
           dot: true,
           src: [
             '.tmp',
-            '<%= angry.dist %>/*',
-            '!<%= angry.dist %>/.git*'
+            '<%= cfg.dist %>/*',
+            '!<%= cfg.dist %>/.git*'
           ]
         }]
       },

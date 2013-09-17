@@ -1,4 +1,4 @@
-
+define(['core'], function(core) {
 
 var TILEDMapClass = Class.extend({
     // This is where we store the full parsed
@@ -303,4 +303,5 @@ var TILEDMapClass = Class.extend({
 });
 
 var gMap = new TILEDMapClass();
-
+return gMap;
+});
