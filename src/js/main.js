@@ -23,7 +23,9 @@ require.config({
 });
 
 
-require(['TILEDMapClass'], function (tiled) {
+require(['TexturePacker'], function (tp) {
     'use strict';
-    console.log(tiled);
+
+    window.TP = {Node: tp};
+    console.log(tp);
 });
