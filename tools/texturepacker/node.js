@@ -1,10 +1,3 @@
-var TP = {
-  pack: function(options){
-    var ifolder = options.ifolder || ".";
-    
-
-  }
-};
 
 var Node = function (){
   this.child = {0: null, 1: null};
@@ -25,9 +18,9 @@ Node.prototype.insert = function(img){
     
     if (this.image) return null;
 
-    if(this.rect.w < img.w || this.rect.h < img.h) return null;
+    if(this.rect.w < img.width || this.rect.h < img.height) return null;
 
-    if(this.rect.w === img.w || this.rect.h === img.h) {
+    if(this.rect.w === img.width && this.rect.h === img.height) {
       this.image = img;
       return this;
     }
@@ -37,21 +30,21 @@ Node.prototype.insert = function(img){
 
     var dw, dh;
 
-    dw = this.rect.w - img.w;
-    dh = this.rect.h - img.h;
+    dw = this.rect.w - img.width;
+    dh = this.rect.h - img.height;
 
 
     if(dw > dh) {
       this.child[0].rect = {
         x: this.rect.x, 
         y: this.rect.y, 
-        w: img.w, 
+        w: img.width, 
         h: this.rect.h
       };
       this.child[1].rect = {
-        x: this.rect.x + img.w, 
+        x: this.rect.x + img.width, 
         y: this.rect.y, 
-        w: this.rect.w - img.w, 
+        w: this.rect.w - img.width, 
         h: this.rect.h
       };
 
@@ -60,18 +53,16 @@ Node.prototype.insert = function(img){
         x: this.rect.x, 
         y: this.rect.y, 
         w: this.rect.w, 
-        h: img.h
+        h: img.height
       };
       this.child[1].rect = {
         x: this.rect.x, 
-        y: this.rect.y+img.h, 
+        y: this.rect.y+img.height, 
         w: this.rect.w, 
-        h: this.rect.h - img.h
+        h: this.rect.h - img.height
       };
     }
     return this.child[0].insert(img);
   }
 };
-return Node;
-
-module.exports = TP;
+module.exports = Node;
