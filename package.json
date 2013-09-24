@@ -16,6 +16,6 @@
   },
   "dependencies": {
     "requirejs": "~2.1.8",
-    "pngjs":"~0.4.0"
+    "pngjs": "~0.4.0"
   }
 }
